@@ -1,0 +1,41 @@
+{
+  "name": "cypress-typescript-template",
+  "version": "1.0.0",
+  "description": "Cypress TypeScript Github template",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"cypress/**/*.ts\"",
+    "lint:code": "tslint --project tsconfig.json --config tslint.json",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvoase/cypress-typescript-template.git"
+  },
+  "keywords": [
+    "testing",
+    "cypress",
+    "template",
+    "typescript"
+  ],
+  "author": "Michael Voase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mvoase/cypress-typescript-template/issues"
+  },
+  "homepage": "https://github.com/mvoase/cypress-typescript-template#readme",
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.4.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.12",
+    "cypress": "^4.8.0",
+    "mocha": "^7.2.0",
+    "prettier": "^2.0.5",
+    "ts-loader": "^7.0.5",
+    "tsify": "^4.0.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1"
+  }
+}
