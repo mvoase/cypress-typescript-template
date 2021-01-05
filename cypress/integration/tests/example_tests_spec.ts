@@ -9,14 +9,15 @@ describe('Example Functional Tests', () => {
   });
 
   it('should navigate to the elements card', () => {
-    cy.get('.category-cards > :nth-child(1)').should('be.visible')
-      .click();
+    cy.get('.category-cards > :nth-child(1)').should('be.visible').click();
     cy.get('.main-header').should('be.visible').should('contain', 'Elements');
   });
 
   it('should fill out the text box form', () => {
     cy.get(':nth-child(1) > .group-header > .header-wrapper').should('be.visible');
-    cy.get(':nth-child(1) > .element-list > .menu-list > #item-0').should('be.visible').should('contain', 'Text Box')
+    cy.get(':nth-child(1) > .element-list > .menu-list > #item-0')
+      .should('be.visible')
+      .should('contain', 'Text Box')
       .click();
     cy.get('#userName').type('Test');
     cy.get('#userEmail').type('Test@Test.com');

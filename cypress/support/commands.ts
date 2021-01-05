@@ -23,3 +23,32 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+import { deviceConfig } from '../helpers/devices';
+
+Cypress.Commands.add(
+  'fill',
+  {
+    prevSubject: 'element'
+  },
+  (subject, value) => {
+    cy.wrap(subject).invoke('val', value).trigger('input').trigger('change');
+  }
+);
+
+Cypress.Commands.add('emulate', (deviceName: string) => {
+  const device = deviceConfig.devices[deviceName];
+  console.log(`Viewport set to device: ${deviceName}`);
+  return cy.viewport(device.width, device.height);
+});
+
+addMatchImageSnapshotCommand({
+  failureThreshold: 0.0, // threshold for entire image
+  failureThresholdType: 'percent', // percent of image or number of pixels
+  customDiffConfig: { threshold: 0.3 }, // threshold for each pixel
+  capture: 'viewport' // capture viewport in screenshot
+});
+
+Cypress.Commands.add('forceClick', { prevSubject: 'element' }, (subject, options) => {
+  cy.wrap(subject).click({ force: true });
+});

@@ -55,5 +55,9 @@
     "resolveJsonModule": true
   },
   "types": ["cypress"],
-  "include": []
+  "include": [
+    "../../node_modules/cypress",
+    "cypress/**/*.ts",
+    "node_modules/cypress/types/index.d.ts"
+  ]
 }
