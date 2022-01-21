@@ -5,7 +5,7 @@ describe('Example Functional Tests', () => {
 
   it('should navigate to the homepage of qa demo', () => {
     cy.get('header > a > img').should('be.visible');
-    cy.url().should('be.equal', 'http://demoqa.com/');
+    cy.url().should('be.equal', 'https://demoqa.com/');
   });
 
   it('should navigate to the elements card', () => {
