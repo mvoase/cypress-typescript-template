@@ -49,7 +49,7 @@ addMatchImageSnapshotCommand({
   capture: 'viewport' // capture viewport in screenshot
 });
 
-Cypress.Commands.add('forceClick', { prevSubject: 'element' }, (subject, options) => {
+Cypress.Commands.add('forceClick', { prevSubject: 'element' }, (subject) => {
   cy.wrap(subject).click({ force: true });
 });
 
