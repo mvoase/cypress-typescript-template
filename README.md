@@ -13,7 +13,7 @@ The template uses the following structure and dependencies as a starting point:
 
 Everything Cypress related sits under the Cypress directory. 
 
-Tests -> integration/tests folder 
+Tests -> e2e/tests folder 
 
 Plugins -> The template uses the `cy-ts-preprocessor.js` for TypeScript compiling. 
 
