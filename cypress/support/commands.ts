@@ -49,6 +49,24 @@ addMatchImageSnapshotCommand({
   capture: 'viewport' // capture viewport in screenshot
 });
 
-Cypress.Commands.add('forceClick', { prevSubject: 'element' }, (subject, options) => {
+Cypress.Commands.add('forceClick', { prevSubject: 'element' }, (subject) => {
   cy.wrap(subject).click({ force: true });
+});
+
+function unquote(str) {
+  return str.replace(/(^")|("$)/g, '');
+}
+
+Cypress.Commands.add('after', { prevSubject: 'element' }, subject => {
+  const win = subject[0].ownerDocument.defaultView;
+  const after = win?.getComputedStyle(subject[0], '::after' || ':after');
+  return unquote(after?.getPropertyValue('content'));
+});
+
+Cypress.Commands.add('mockGeolocation', (latitude: number, longitude: number) => {
+  cy.window().then(($window) =>  {
+    cy.stub($window.navigator.geolocation, 'getCurrentPosition', (callback) => {
+      return callback({ coords: { latitude, longitude } });
+    });
+  });
 });
